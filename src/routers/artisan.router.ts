@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { Artisan } from "../classes/artisan.class";
+import { validateBody } from "../middlewares/validate.middleware";
+import { CreateArtisanSchema } from "../schemas/artisan.schema";
 
 export const artisanRouter = Router();
 
-artisanRouter.post("/", async (req, res) => {
+artisanRouter.post("/", validateBody(CreateArtisanSchema), async (req, res) => {
   try {
     const newArtisan = new Artisan(req.body.name, req.body.email);
     const error = await newArtisan.insert(req.body.password);
