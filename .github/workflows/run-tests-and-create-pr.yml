@@ -1,0 +1,41 @@
+name: Run Tests and Create PR to Master
+
+on:
+  push:
+    branches:
+      - '**'  # Detecta push para qualquer branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run specific test
+        run: npx jest src/routers/artisan.router.test.ts --passWithNoTests
+
+  create-pr:
+    if: github.ref != 'refs/heads/master'
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request to master
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}
+          base: master
+          title: 'Auto PR from ${{ github.ref_name }}'
+          body: 'Este PR foi criado automaticamente após um push para `${{ github.ref_name }}`'
