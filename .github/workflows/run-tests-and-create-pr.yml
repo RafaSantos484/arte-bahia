@@ -3,7 +3,7 @@ name: Run Tests and Create PR to Master
 on:
   push:
     branches:
-      - '**'  # Detecta push para qualquer branch
+      - '**'
 
 jobs:
   test:
@@ -36,6 +36,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
-          base: master
+          base: develop
           title: 'Auto PR from ${{ github.ref_name }}'
           body: 'Este PR foi criado automaticamente após um push para `${{ github.ref_name }}`'
