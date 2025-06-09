@@ -24,14 +24,14 @@ jobs:
         run: npx jest src/routers/artisan.router.test.ts --passWithNoTests
 
   create-pr:
-    if: github.ref != 'refs/heads/master'
+    if: github.ref != 'refs/heads/develop'
     runs-on: ubuntu-latest
     needs: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create Pull Request to master
+      - name: Create Pull Request to develop
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
