@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import { artisanRouter } from "./api/routes/artisan.router";
+import { clientRouter } from "./api/routes/client.router";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/artisan", artisanRouter);
+app.use("/client", clientRouter);
 
 const port = process.env.PORT || 5001;
 app.listen(port, () => {
