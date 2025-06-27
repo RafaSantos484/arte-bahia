@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import { artisanRouter } from "./api/routes/artisan.router";
 import { clientRouter } from "./api/routes/client.router";
+import { productRouter } from "./api/routes/product.router";
+import { purchaseRouter } from "./api/routes/purchase.router";
 
 dotenv.config();
 
@@ -15,6 +17,8 @@ app.get("/", (req, res) => {
 
 app.use("/artisan", artisanRouter);
 app.use("/client", clientRouter);
+app.use("/product", productRouter);
+app.use("/purchase", purchaseRouter);
 
 const port = process.env.PORT || 5001;
 app.listen(port, () => {
