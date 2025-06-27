@@ -1,7 +1,7 @@
 import request from "supertest";
-import { Artisan } from "../classes/artisan.class";
-import { artisanRouter } from "./artisan.router";
+import { artisanRouter } from "../api/routes/artisan.router";
 import express, { Express } from "express";
+import { Artisan } from "../core/services/artisan.service";
 
 describe("artisanRouter", () => {
   let app: Express;

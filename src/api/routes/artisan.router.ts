@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { Artisan } from "../classes/artisan.class";
 import { validateBody } from "../middlewares/validate.middleware";
-import { CreateArtisanSchema } from "../schemas/artisan.schema";
+import { CreateArtisanSchema } from "../../core/schemas/artisan.schema";
+import { Artisan } from "../../core/services/artisan.service";
 
 export const artisanRouter = Router();
 

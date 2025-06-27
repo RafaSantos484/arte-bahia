@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import { artisanRouter } from "./routers/artisan.router";
+import { artisanRouter } from "./api/routes/artisan.router";
 
 dotenv.config();
 

@@ -1,7 +1,7 @@
 import { FieldPacket, ResultSetHeader } from "mysql2";
-import { MySql } from "./mysql.class";
-import { Table } from "./table.class";
-import { Auth } from "./auth.class";
+import { Auth } from "../../classes/auth.class";
+import { MySql } from "../../config/mysql";
+import { Table } from "../interfaces/table.interface";
 
 export class Artisan implements Table {
   id: number;
