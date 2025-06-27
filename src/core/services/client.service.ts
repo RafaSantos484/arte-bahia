@@ -1,5 +1,5 @@
 import { FieldPacket, ResultSetHeader } from "mysql2";
-import { Auth } from "../../classes/auth.class";
+import { Auth } from "./auth.service";
 import { MySql } from "../../config/mysql";
 import { Table } from "../interfaces/table.interface";
 
